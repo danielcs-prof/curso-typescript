@@ -31,6 +31,13 @@ an2 = true;
 console.log(typeof an3);
 
 // 3 - ARRAY
+let numeros: number[] = [1, 2, 3];
+let strings: string[] = ['a', 'b', 'c'];
+let booleanos: boolean[] = [true, false, true];
+let unionArray: (number | string)[] = [1, 'dois', 3];
+let tuplaArray: [number, string][] = [[1, 'um'], [2, 'dois']];
+let objetoArray: { nome: string; idade: number }[] = [{ nome: 'Ana', idade: 30 }];
+
 let num3 : number[];
 let num4 : number[] = [1,2,3,4,5];
 let num5 : Array<number>;
@@ -70,10 +77,20 @@ console.log(nu1);  // exibe um erro se não for atribuido nenhum valor
 console.log(nu3);  // exibe um erro se não for atribuido nenhum valor
 
 // TIPO UNKNOW - DESCONHECIDO - Não sabe o tipo que vai receber
-let unk1 : unknown
-let an6 : any = 'total'
-unk1 = 10
-unk1 = "22"
-unk1 = {
-    total : 100
+//any: Permite que a variável contenha qualquer tipo de valor, desativando a verificação de tipo.
+//unknown: Aceita qualquer tipo, mas é mais seguro que any, pois exige que seja feita uma verificação antes do uso.
+let valorQualquer: any = 'teste';
+valorQualquer = 42; // permitido
+
+let valorDesconhecido: unknown = 'teste';
+// valorDesconhecido.toUpperCase(); // Erro, precisa de validação
+
+if (typeof valorDesconhecido === 'string') {
+  console.log(valorDesconhecido.toUpperCase());
 }
+
+//ASSERTIONS 
+//Permite dizer ao TypeScript qual tipo específico uma variável deve ter, mesmo que o compilador não consiga inferir automaticamente.
+//Quando temos certeza do tipo da variável em situações que o TypeScript não consegue inferir.
+let valor: any = "Isto é uma string";
+let tamanho: number = (valor as string).length; // Type assertion
